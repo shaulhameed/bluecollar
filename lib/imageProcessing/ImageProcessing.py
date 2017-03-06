@@ -7,32 +7,33 @@ from skimage.util.dtype import dtype_range
 from skimage.util.shape import view_as_windows
 
 class detect:
-
     full_cascade = cv2.CascadeClassifier("/home/prema/opencv-3.1.0/data/haarcascades/haarcascade_fullbody.xml")
     face_cascade = cv2.CascadeClassifier("/home/prema/opencv-3.1.0/data/haarcascades/haarcascade_frontalface_default.xml")
     os.system("espeak 'Pleasure welcoming you'")
     video_capture = cv2.VideoCapture(0)
+
     def Bgr_Gray(self,face_cascade,video_capture):
-        #id=0
+
         while True:
             self.ret,self.frame = video_capture.read()
             self.gray = cv2.cvtColor(self.frame ,cv2.COLOR_BGR2GRAY)
             self.faces = face_cascade .detectMultiScale(self.gray,1.3,5)
             if len(self.faces) is 0:
-              # execfile("/home/gowd95/PycharmProjects/project1/VIDEO/Audio_Alert.py")
                 os.system("espeak ''")
             for (x,y,w,h) in self.faces:
                     cv2.rectangle(self.frame ,(x,y), (x+w, y+h),(0,255, 0),2)
                     cv2.imshow('Video', self.frame)
                     self.roi_gray = self.gray[y:y + h, x:x + w]
-                    self.roi_color = self.frame[y:y + h, x:x + w]
+                    roi_color = self.frame[y:y + h, x:x + w]
                     #id = id + 1
-                    # cv2.imwrite("/home/prema/Images4pro/User." + str(id) + " .png", self.roi_color)
-                    cv2.imwrite("/home/prema/Images4pro/User.png", self.roi_color)
+                    cv2.imwrite("/home/prema/Images4pro/user1.png", roi_color)
+                    #cv2.imwrite("/home/prema/Images4pro/User." + str(id) + " .png", roi_color)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
+
         video_capture.release()
+
         #cv2.destroyAllWindows()
 
 
@@ -111,7 +112,8 @@ for img in glob.glob("/home/prema/Images4pro/*.png"):
     n= cv2.imread(img)
     images.append(n)
     img1 = cv2.imread(img)
-    img2 = cv2.imread("/home/prema/Images4pro/User.png")
+    img2 = cv2.imread("/home/prema/Images4pro/user.png")
+
 
     img11 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
     img12 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
@@ -127,10 +129,14 @@ for img in glob.glob("/home/prema/Images4pro/*.png"):
         plt.suptitle("Percentage : %.2f " % (s * 100))
     a=int(s*100)
     if a>50:
-        os.system("espeak 'Successful match ,Thank you'")
+
         print(a)
         print("Successful Match,")
         print(img)
+os.system("espeak 'Successful match ,Thank you'")
+os.system("espeak 'Please Provide your voice input for checking'")
+
+
 
 
 
