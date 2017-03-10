@@ -1,0 +1,14 @@
+Houndify:
+
+key:
+IfdEsW-SGFzb06roF4vjyg==
+
+
+Client key:
+fZscBAowYP-Q2knmpa4C3ov2cT1Opb6kyaWMCsNDeBUh7XJhDzOf3LkRW-khB7BL9j0kOjNF2nThCjtaVYTYXg==
+
+
+./sample_wave.py IfdEsW-SGFzb06roF4vjyg== fZscBAowYP-Q2knmpa4C3ov2cT1Opb6kyaWMCsNDeBUh7XJhDzOf3LkRW-khB7BL9j0kOjNF2nThCjtaVYTYXg== test_audio/brian.wav
+#to run the sample_wave file ! use this command while u are in the current directory.
+ 
+
